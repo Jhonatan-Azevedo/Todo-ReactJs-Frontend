@@ -22,6 +22,7 @@ const Home = () => {
 
     try {
       const { data } = await api.get(urlRequest);
+      console.log(data)
       setTasks(data);
     } catch (err) {
       throw new Error(err.message);
@@ -41,8 +42,6 @@ const Home = () => {
 
   return (
     <S.Container>
-      <Header clickNotification={Notification} />
-
       <S.FilterArea>
         <button type="button" onClick={() => setFilterActived("all")}>
           <FilterCard title="Todos" actived={!!(filterActived === "all")} />
@@ -69,11 +68,11 @@ const Home = () => {
         {tasks.length > 0 ?
           tasks.map((task) => (
             <Link to={`/task/${task._id}`} key={task._id}>
-              <TaskCard title={task.title} when={task.when} type={task.type} done={task.done} />
+              <TaskCard title={task.title} when={task.when} type={task.type} done={!!task.done} />
             </Link>
           )) :
           <>
-            <h3>Nenhuma tarefa cadastrada</h3>
+            <h3>Nenhuma tarefa cadastrada.</h3>
           </>
         }
       </S.Content>

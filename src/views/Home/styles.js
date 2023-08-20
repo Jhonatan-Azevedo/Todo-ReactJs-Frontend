@@ -38,6 +38,11 @@ export const Content = styled.div`
     text-decoration: none;
     color: #474747;
   }
+
+  h3 {
+    font-weight: normal;
+    margin-top: 20px;
+  }
 `;
 
 export const Title = styled.div`

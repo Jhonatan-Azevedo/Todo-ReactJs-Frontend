@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom'
 import { mask, unMask } from "remask";
 import { format } from "date-fns";
-
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import api from "../../services/api";
 import typeIcons from "../../utils/typeIcons";
+import { showAlert, showConfirm } from "../../utils/sweetAlert";
 
 import iconCalender from "../../assets/calendar.png";
 import iconClock from "../../assets/clock.png";
@@ -108,7 +106,7 @@ const Task = () => {
   };
 
   const remove = async () => {
-    const res = confirm('Deseja realmente remover a tarefa ?');
+    const res = await showConfirm('Deseja realmente remover a tarefa ?', 'info');
     if (res) {
       try {
         await api.delete(`task/${idParams}`)
@@ -116,10 +114,10 @@ const Task = () => {
       } catch (err) {
         throw new Error(err.message);
       }
-      return alert("Ok, vamos remover")
+      return showAlert('Ok, vamos remover!', 'success')
     }
 
-    return alert("Ok, vamos manter")
+    return showAlert('Ok, vamos manter!', 'error')
   }
 
   useEffect(() => {
@@ -132,11 +130,10 @@ const Task = () => {
 
   return (
     <S.Container>
-      <Header clickNotification={Notification} />
 
       <S.Form>
         <S.TypeIcons>
-          {typeIcons.map(
+          {typeIcons.length > 0 && typeIcons.map(
             (icon, index) =>
               index > 0 && (
                 <button
@@ -204,7 +201,7 @@ const Task = () => {
               checked={done}
               onChange={(e) => setDone(!done)}
             />
-            <label for="checkbox-finally">CONCLUÍDO</label>
+            <label htmlFor="checkbox-finally">CONCLUÍDO</label>
           </div>
 
           {idParams && <button type="button" onClick={remove}>EXCLUIR</button>}
@@ -216,8 +213,6 @@ const Task = () => {
           </button>
         </S.Save>
       </S.Form>
-
-      <Footer />
     </S.Container>
   );
 };

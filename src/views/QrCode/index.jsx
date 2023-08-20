@@ -36,7 +36,6 @@ const QrCode = () => {
 
     return (
         <S.Container>
-            <Header clickNotification={Notification} />
 
             <S.Content>
                 <h1>CAPTURE O QRCODE PELO APP</h1>
@@ -54,7 +53,6 @@ const QrCode = () => {
                 <button type="button" disabled={disabledBtn} onClick={saveMac}>SINCRONIZAR</button>
             </S.ValidationCODE>
             <h4>QrCode</h4>
-            <Footer />
         </S.Container>
     );
 };

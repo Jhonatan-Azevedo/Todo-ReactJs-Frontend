@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import colors from "../../utils/colors";
 
-export const Container = styled.div`
+export const Container = styled(({ isActived, ...rest }) => (
+  <section {...rest} />
+))`
   width: 100%;
   height: 70px;
-  background: ${(props) => (!!props.actived ? "#f35a03" : "#474747")};
+  background: ${({ isActived }) =>
+    isActived ? colors.primary : colors.secondary};
   padding: 20px;
   cursor: pointer;
   box-sizing: border-box;
