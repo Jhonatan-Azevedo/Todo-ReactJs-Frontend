@@ -87,7 +87,7 @@ export const Input = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin-bottom: 20px;
 
   span {
     color: ${colors.gray};
@@ -128,7 +128,7 @@ export const TextArea = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-bottom: 20px;
 
   span {
     color: ${colors.gray};

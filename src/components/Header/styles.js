@@ -43,7 +43,7 @@ export const RightSide = styled.div`
   button,
   #exit-btn {
     font-size: 16px;
-    ${colors.white}
+    color: ${colors.white};
     font-weight: bold;
     text-decoration: none;
     margin: 0 10px;
@@ -81,7 +81,7 @@ export const RightSide = styled.div`
   .divider::after {
     content: "|";
     margin: 0 10px;
-    ${colors.white}
+    color: ${colors.white};
   }
 
   #exit-btn {

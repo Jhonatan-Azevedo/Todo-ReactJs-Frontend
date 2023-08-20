@@ -69,7 +69,7 @@ export const Title = styled.div`
     color: ${colors.secondary};
     position: relative;
     top: 10px !important;
-    background-color: ${colors.white};
+    background-color: #fff;
     padding: 0 20px;
   }
 `;

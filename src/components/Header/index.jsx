@@ -25,6 +25,8 @@ const Header = () => {
 
   const Notification = () => {
     navigate(`/late`)
+
+    lateVerify()
   };
 
   const logout = async () => {
