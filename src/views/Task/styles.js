@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../utils/colors";
 
 export const Container = styled.section`
   width: 100%;
@@ -8,6 +9,12 @@ export const Container = styled.section`
   align-items: center;
 
   overflow-x: hidden;
+
+  #loading-message {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
 `;
 
 export const Form = styled.form`
@@ -17,6 +24,19 @@ export const Form = styled.form`
 
   @media (max-width: 768px) {
     width: 90%;
+  }
+`;
+
+export const FieldLoading = styled.div`
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  span {
+    font-size: 24px;
+    margin: 0 5px;
   }
 `;
 
@@ -34,21 +54,31 @@ export const TypeIcons = styled.div`
     border: none;
     background: none;
     outline: none;
-  }
 
-  img {
-    width: 55px;
-    height: 55px;
-    margin: 5px;
-    cursor: pointer;
+    img {
+      width: 55px;
+      height: 55px;
+      margin: 5px;
+      cursor: pointer;
 
-    &:hover {
-      opacity: 0.8;
+      &:hover {
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        width: 40px;
+        height: 40px;
+      }
     }
 
-    @media (max-width: 768px) {
-      width: 40px;
-      height: 40px;
+    &:disabled {
+      img {
+        cursor: default;
+        opacity: 0.3;
+        &:hover {
+          opacity: 0.3;
+        }
+      }
     }
   }
 `;
@@ -69,7 +99,12 @@ export const Input = styled.div`
     padding: 15px 5px;
     border: none;
     outline: none;
-    border-bottom: 1px solid #f35a03;
+    border-bottom: 1px solid ${colors.primary};
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 
   input::-webkit-calendar-picker-indicator {
@@ -104,9 +139,14 @@ export const TextArea = styled.div`
     font-size: 16px;
     padding: 15px 5px;
     outline: none;
-    border: 1px solid #f35a03;
+    border: 1px solid ${colors.primary};
     border-radius: 5px;
     resize: none;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 `;
 export const Options = styled.div`
@@ -115,7 +155,7 @@ export const Options = styled.div`
 
   button {
     font-weight: bold;
-    color: #474747;
+    color: ${colors.secondary};
     border: none;
     background: none;
     font-size: 18px;
@@ -124,16 +164,29 @@ export const Options = styled.div`
     &:hover {
       opacity: 0.7;
     }
+
+    &:disabled {
+      &:hover {
+        opacity: 0.5;
+      }
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 
   div {
     display: flex;
     align-items: center;
-    color: #f35a03;
+    color: ${colors.primary};
     font-weight: bold;
 
     label {
       cursor: pointer;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
     }
 
     input {
@@ -145,6 +198,15 @@ export const Options = styled.div`
       margin: 0 5px 0 0;
       display: inline-block;
       cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
     }
 
     input:checked {
@@ -160,7 +222,7 @@ export const Save = styled.div`
 
   button {
     width: 100%;
-    background: #f35a03;
+    background: ${colors.primary};
     border: none;
     font-size: 20px;
     color: #fff;
@@ -172,6 +234,15 @@ export const Save = styled.div`
 
     &:hover {
       opacity: 0.7;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 `;

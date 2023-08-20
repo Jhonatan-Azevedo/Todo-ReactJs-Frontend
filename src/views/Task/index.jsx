@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom'
 import { mask, unMask } from "remask";
 import { format } from "date-fns";
+import { showAlert, showConfirm } from "../../utils/sweetAlert";
 import api from "../../services/api";
 import typeIcons from "../../utils/typeIcons";
-import { showAlert, showConfirm } from "../../utils/sweetAlert";
+import SpinnerLoading from "../../components/SpinnerLoading"
 
 import iconCalender from "../../assets/calendar.png";
 import iconClock from "../../assets/clock.png";
@@ -21,12 +22,14 @@ const Task = () => {
   const [description, setDescription] = useState();
   const [date, setDate] = useState();
   const [hour, setHour] = useState();
+  const [isLoading, setIsloanding] = useState(false);
 
   const { id: idParams } = useParams()
   const navigate = useNavigate();
   const isConnected = useIsConnected();
 
   const loadTaskDetail = async () => {
+    setIsloanding(true);
     try {
       const { data } = await api.get(`/task/${idParams}`);
       setType(data.type)
@@ -37,12 +40,15 @@ const Task = () => {
       setHour(format(new Date(data.when), 'HH:mm'))
     } catch (err) {
       throw new Error(err.message);
+    } finally {
+      setIsloanding(false);
     }
   }
 
   const save = async () => {
     if (validateSend()) return
 
+    setIsloanding(true)
     const dataSave = {
       macaddress: isConnected,
       type,
@@ -54,47 +60,50 @@ const Task = () => {
 
     try {
       if (idParams) {
-        return put(dataSave)
+        return await put(dataSave)
       }
 
-      return post(dataSave)
+      return await post(dataSave)
     } catch (err) {
-      throw new Error(err.message);
+      showAlert(err.response.data.error, 'error');
+      console.error("❌ error Task: ", err.message)
+    } finally {
+      setIsloanding(false)
     }
   };
 
   const put = async (dataSave) => {
-    const { data } = await api.put(`/task/${idParams}`, dataSave);
-    console.log(data)
+    await api.put(`/task/${idParams}`, dataSave);
+    showAlert('Tarefa alterada com sucesso!', 'success');
     return navigate('/')
   }
 
   const post = async (dataSave) => {
-    const { data } = await api.post("/task", dataSave);
-    console.log(data)
-    return alert("Tarefa cadastrada com sucesso!");
+    await api.post("/task", dataSave);
+    resetForm();
+    return showAlert('Tarefa cadastrada com sucesso!', 'success');
   }
 
   const validateSend = () => {
     if (!title) {
-      alert('Você precisa informar o título da tarefa.');
+      showAlert('Você precisa informar o título da tarefa.', 'warning');
       return true;
     }
 
     if (!description) {
-      alert('Você precisa informar a descrição da tarefa.');
+      showAlert('Você precisa informar a descrição da tarefa.', 'warning');
       return true;
     }
     if (!type) {
-      alert('Você precisa informar o tipo da tarefa.');
+      showAlert('Você precisa informar o tipo da tarefa.', 'warning');
       return true;
     }
     if (!date) {
-      alert('Você precisa definir a data da tarefa.');
+      showAlert('Você precisa definir a data da tarefa.');
       return true;
     }
     if (!hour) {
-      alert('Você precisa definir a hora da tarefa.');
+      showAlert('Você precisa definir a hora da tarefa.');
       return true;
     }
 
@@ -120,6 +129,16 @@ const Task = () => {
     return showAlert('Ok, vamos manter!', 'error')
   }
 
+  const resetForm = () => {
+    setId("");
+    setDone(false);
+    setTitle("");
+    setDescription("");
+    setDate("");
+    setHour("");
+    setIsloanding(false);
+  }
+
   useEffect(() => {
     if (!isConnected) {
       return navigate('/qrcode')
@@ -130,13 +149,17 @@ const Task = () => {
 
   return (
     <S.Container>
-
+      {(idParams && isLoading) && <S.FieldLoading>
+        <span>Buscando ...</span><SpinnerLoading />
+      </S.FieldLoading>}
       <S.Form>
+
         <S.TypeIcons>
           {typeIcons.length > 0 && typeIcons.map(
             (icon, index) =>
               index > 0 && (
                 <button
+                  disabled={isLoading}
                   key={index}
                   type="button"
                   onClick={() => setType(index)}
@@ -158,6 +181,7 @@ const Task = () => {
             placeholder="Título da tarefa..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            disabled={isLoading}
           />
         </S.Input>
 
@@ -168,6 +192,7 @@ const Task = () => {
             placeholder="Detalhes da tarefa"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            disabled={isLoading}
           ></textarea>
         </S.TextArea>
 
@@ -178,6 +203,7 @@ const Task = () => {
             placeholder="dd/MM/aaaa"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            disabled={isLoading}
           />
           <img src={iconCalender} alt="Calendário" />
         </S.Input>
@@ -189,6 +215,7 @@ const Task = () => {
             placeholder="HH:mm"
             value={hour}
             onChange={(e) => setHourMask(e.target.value)}
+            disabled={isLoading}
           />
           <img src={iconClock} alt="Relógio" />
         </S.Input>
@@ -200,16 +227,17 @@ const Task = () => {
               type="checkbox"
               checked={done}
               onChange={(e) => setDone(!done)}
+              disabled={isLoading}
             />
-            <label htmlFor="checkbox-finally">CONCLUÍDO</label>
+            <label disabled={isLoading} htmlFor="checkbox-finally">CONCLUÍDO</label>
           </div>
 
-          {idParams && <button type="button" onClick={remove}>EXCLUIR</button>}
+          {idParams && <button disabled={isLoading} type="button" onClick={remove}>EXCLUIR</button>}
         </S.Options>
 
         <S.Save>
-          <button type="button" onClick={save}>
-            SALVAR
+          <button disabled={isLoading} type="button" onClick={save}>
+            {isLoading ? <SpinnerLoading /> : <>SALVAR</>}
           </button>
         </S.Save>
       </S.Form>

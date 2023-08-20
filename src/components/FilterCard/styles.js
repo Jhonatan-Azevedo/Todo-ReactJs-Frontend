@@ -9,7 +9,6 @@ export const Container = styled(({ isActived, ...rest }) => (
   background: ${({ isActived }) =>
     isActived ? colors.primary : colors.secondary};
   padding: 20px;
-  cursor: pointer;
   box-sizing: border-box;
 
   border-radius: 5px;

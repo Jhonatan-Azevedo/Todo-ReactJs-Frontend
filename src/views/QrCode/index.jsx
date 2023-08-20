@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { mask, unMask } from 'remask'
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import Qr from "qrcode.react"
 
 import * as S from "./styles";
+import { showAlert } from "../../utils/sweetAlert";
 
 const QrCode = () => {
     const [mac, setMac] = useState("");
     const [disabledBtn, setDisabledBtn] = useState(true);
 
-    // // 11:11:11:11:11:11
     const navigate = useNavigate()
     const saveMac = async () => {
         if (!mac) {
-            return alert('Você precisa informar o número que apareceu')
+            return showAlert('Você precisa informar o número que apareceu', 'warning ')
         }
 
         await localStorage.setItem(

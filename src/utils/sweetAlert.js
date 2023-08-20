@@ -6,7 +6,7 @@ const SweetAlert = withReactContent(Swal);
 
 export const showAlert = (message, type) => {
   return SweetAlert.fire({
-    title: message,
+    text: message,
     icon: type,
     showConfirmButton: false,
     timer: 2500,
@@ -15,7 +15,7 @@ export const showAlert = (message, type) => {
 
 export const showConfirm = async (message, type) => {
   const { isConfirmed } = await SweetAlert.fire({
-    title: message,
+    text: message,
     icon: type,
     showCancelButton: true,
     confirmButtonColor: colors.primary,

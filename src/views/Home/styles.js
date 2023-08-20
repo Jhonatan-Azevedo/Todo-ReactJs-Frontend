@@ -5,6 +5,11 @@ export const Container = styled.div`
   min-height: calc(100vh - 120px);
   margin-bottom: 60px;
   overflow: hidden;
+  text-align: center;
+
+  #loading-message {
+    font-size: 20px;
+  }
 `;
 
 export const FilterArea = styled.div`
@@ -21,9 +26,16 @@ export const FilterArea = styled.div`
     outline: none;
     margin: 5px 10px;
 
+    cursor: pointer;
+
     flex-grow: 1;
     flex-basis: 250px;
     margin: 10px;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 `;
 
@@ -58,5 +70,18 @@ export const Title = styled.div`
     top: 10px !important;
     background-color: #fff;
     padding: 0 20px;
+  }
+`;
+
+export const FieldLoading = styled.div`
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  span {
+    font-size: 24px;
+    margin: 0 5px;
   }
 `;
