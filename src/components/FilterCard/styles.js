@@ -22,12 +22,12 @@ export const Container = styled(({ isActived, ...rest }) => (
   }
 
   span {
-    color: #f4f4f4;
+    color: ${colors.white};
     align-self: flex-end;
     font-size: 18px;
   }
 
   &:hover {
-    background-color: #f35a03;
+    background-color: ${colors.primary};
   }
 `;

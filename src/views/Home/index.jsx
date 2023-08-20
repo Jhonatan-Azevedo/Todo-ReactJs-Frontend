@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import FilterCard from "../../components/FilterCard";
 import TaskCard from "../../components/TaskCard";
 import api from "../../services/api";
@@ -16,6 +16,7 @@ const Home = () => {
 
 
   const navigate = useNavigate()
+  const { filter } = useParams();
   const isConnected = useIsConnected();
 
   const loadTasks = async () => {
@@ -33,16 +34,21 @@ const Home = () => {
     }
   };
 
-  const Notification = () => {
-    setFilterActived("late");
-  };
 
   useEffect(() => {
     if (!isConnected) {
       return navigate('/qrcode')
     }
+
     loadTasks();
   }, [filterActived]);
+
+  useEffect(() => {
+    if (filter) {
+      setFilterActived(filter)
+      navigate('/');
+    }
+  }, [filter]);
 
   return (
     <S.Container>

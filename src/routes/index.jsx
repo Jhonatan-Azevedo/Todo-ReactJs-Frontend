@@ -11,6 +11,7 @@ const Router = () => {
       <Header />
       <Routes>
         <Route path="/" exact element={<Home />} />
+        <Route path="/:filter" exact element={<Home />} />
         <Route path="/task" exact element={<Task />} />
         <Route path="/task/:id" exact element={<Task />} />
         <Route path="/qrcode" exact element={<QrCode />} />

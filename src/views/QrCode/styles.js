@@ -54,7 +54,7 @@ export const ValidationCODE = styled.div`
   button {
     font-weight: bold;
     background-color: ${colors.primary};
-    color: #fff;
+    color: ${colors.white};
     font-size: 18px;
     padding: 10px;
     border-radius: 30px;

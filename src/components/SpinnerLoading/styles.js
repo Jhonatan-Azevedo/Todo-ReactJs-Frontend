@@ -9,18 +9,11 @@ export const Container = styled.div`
 
 export const Loader = styled.div`
   border: 6px solid ${colors.secondary};
-  border-top: 6px #f4f4f4 solid;
+  border-top: 6px ${colors.white} solid;
   border-radius: 50%;
   height: 20px;
   width: 20px;
   animation: spin 1.3s linear infinite;
-  /* 
-  border: 16px solid #f3f3f3; 
-  border-top: 16px solid #3498db;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite; */
 
   @keyframes spin {
     0% {

@@ -90,7 +90,7 @@ export const Input = styled.div`
   margin: 10px 0;
 
   span {
-    color: #707070;
+    color: ${colors.gray};
     margin: 5px 0;
   }
 
@@ -131,7 +131,7 @@ export const TextArea = styled.div`
   margin-top: 10px;
 
   span {
-    color: #707070;
+    color: ${colors.gray};
     margin: 5px 0;
   }
 
@@ -193,7 +193,7 @@ export const Options = styled.div`
       all: unset;
       width: 20px;
       height: 20px;
-      border: 1px solid #f35a03 !important;
+      border: 1px solid ${colors.primary} !important;
       border-radius: 5px;
       margin: 0 5px 0 0;
       display: inline-block;
@@ -210,7 +210,7 @@ export const Options = styled.div`
     }
 
     input:checked {
-      background-color: #f35a03;
+      background-color: ${colors.primary};
       width: 20px;
       height: 20px;
     }
@@ -225,7 +225,7 @@ export const Save = styled.div`
     background: ${colors.primary};
     border: none;
     font-size: 20px;
-    color: #fff;
+    color: ${colors.white};
     font-weight: bold;
     padding: 15px;
     margin: 30px 0 0 0;

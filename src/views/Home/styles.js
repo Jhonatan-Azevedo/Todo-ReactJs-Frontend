@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../utils/colors";
 
 export const Container = styled.div`
   width: 100%;
@@ -48,7 +49,7 @@ export const Content = styled.div`
 
   a {
     text-decoration: none;
-    color: #474747;
+    color: ${colors.secondary};
   }
 
   h3 {
@@ -59,16 +60,16 @@ export const Content = styled.div`
 
 export const Title = styled.div`
   width: 100%;
-  border-bottom: 1px solid #474747;
+  border-bottom: 1px solid ${colors.secondary};
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 
   h3 {
-    color: #474747;
+    color: ${colors.secondary};
     position: relative;
     top: 10px !important;
-    background-color: #fff;
+    background-color: ${colors.white};
     padding: 0 20px;
   }
 `;

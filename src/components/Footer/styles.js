@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import colors from "../../utils/colors";
 
 export const Container = styled.div`
   width: 100%;
   height: 50px;
-  background: #474747;
-  border-top: 6px solid #f35a03;
+  background: ${colors.secondary};
+  border-top: 6px solid ${colors.primary};
 
   position: fixed;
   display: flex;
@@ -13,6 +14,26 @@ export const Container = styled.div`
   bottom: 0;
 
   span {
-    color: #f4f4f4;
+    color: ${colors.white};
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+    display: flex;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    span {
+      color: ${colors.primary};
+    }
+
+    img {
+      width: 20px;
+      margin: 0 5px;
+    }
   }
 `;

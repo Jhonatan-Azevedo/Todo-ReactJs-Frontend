@@ -1,31 +1,5 @@
 import styled from "styled-components";
-
-// export const Container = styled.section`
-//   width: 350px;
-//   height: 200px;
-//   box-shadow: -3px 1px 13px 2px rgba(0, 0, 0, 0.3);
-//   border-radius: 10px;
-//   cursor: pointer;
-//   margin: 20px;
-//   padding: 10px;
-//   box-sizing: border-box;
-//   text-align: center;
-
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-
-//   opacity: ${({ doneValue }) => (doneValue ? 0.5 : 1)};
-
-//   &:hover {
-//     opacity: 0.5;
-//   }
-
-//   .concluded {
-//     opacity: 0.5;
-//   }
-// `;
+import colors from "../../utils/colors";
 
 export const Container = styled(({ done, ...rest }) => <section {...rest} />)`
   width: 350px;
@@ -77,10 +51,10 @@ export const BottomCard = styled.div`
   margin-top: 10px;
 
   strong {
-    color: #f35a03;
+    color: ${colors.primary};
   }
 
   span {
-    color: #707070;
+    color: ${colors.gray};
   }
 `;

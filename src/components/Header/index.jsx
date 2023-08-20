@@ -6,11 +6,12 @@ import api from '../../services/api';
 import * as S from "./styles";
 import useIsConnected from '../../utils/isConnected';
 
-const Header = ({ clickNotification }) => {
+const Header = () => {
   const [lateCount, setlateCount] = useState();
 
   const navigate = useNavigate()
   const isConnected = useIsConnected();
+
   const lateVerify = async () => {
     const urlRequest = `task/filter/late/${isConnected}`;
 
@@ -20,6 +21,10 @@ const Header = ({ clickNotification }) => {
     } catch (err) {
       throw new Error(err.message);
     }
+  };
+
+  const Notification = () => {
+    navigate(`/late`)
   };
 
   const logout = async () => {
@@ -48,7 +53,7 @@ const Header = ({ clickNotification }) => {
         }
         {lateCount && <>
           <span className="divider" />
-          <button onClick={clickNotification} id="notification">
+          <button onClick={Notification} id="notification">
             <img src={bell} alt="Notificação" title="Notificação" />
             <span>{lateCount}</span>
           </button>
