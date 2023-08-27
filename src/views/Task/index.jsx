@@ -99,11 +99,11 @@ const Task = () => {
       return true;
     }
     if (!date) {
-      showAlert('Você precisa definir a data da tarefa.');
+      showAlert('Você precisa definir a data da tarefa.', 'warning');
       return true;
     }
     if (!hour) {
-      showAlert('Você precisa definir a hora da tarefa.');
+      showAlert('Você precisa definir a hora da tarefa.', 'warning');
       return true;
     }
 

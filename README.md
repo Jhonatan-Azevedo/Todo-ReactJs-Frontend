@@ -1,71 +1,91 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Todo Fullstack with NodeJs+ReactJs+ReactNative by @Jhonatan-Azevedo
 
-## Available Scripts
+React Js Front-end.
+## 🛠 Built With
 
-In the project directory, you can run:
+The main frameworks/libraries used in the project
 
-### `npm start`
+- [Axios](https://axios-http.com/ptbr/docs/intro)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Date-fns](https://date-fns.org/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Qrcode.react](qrcode.react)
 
-### `npm test`
+- [React](https://react.dev/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Remask](https://www.npmjs.com/package/remask)
 
-### `npm run build`
+- [Styled-components](https://styled-components.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Sweetalert2](https://sweetalert2.github.io/#examples)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚙ How To Use
 
-### `npm run eject`
+To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  git clone https://github.com/Jhonatan-Azevedo/Todo-ReactJs-Frontend.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Go to the project directory
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  cd Todo-ReactJs-Frontend
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Install dependencies
 
-## Learn More
+```bash
+  npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  or
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  yarn install
+```
 
-### Code Splitting
+Start the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  npm run start
 
-### Analyzing the Bundle Size
+  or
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  yarn start
+```
 
-### Making a Progressive Web App
+Start the build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+  npm run build
 
-### Advanced Configuration
+  or
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  yarn build
+```
 
-### Deployment
+## 📍 Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To run this project, you will need to add the following environment variables to your .env file.
 
-### `npm run build` fails to minify
+`REACT_APP_URL_API=yourUrlApi`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# Todo-ReactJs-Frontend" 
+`REACT_APP_LOCALSTORAGE_MACADDRESS=yourNameLocalStorage`
+
+Both are for database access.
+
+
+## 🔋 Full Stack project
+
+[**API:**](https://github.com/Jhonatan-Azevedo/Todo-NodeJS-API)  Node, Express;
+
+**Client:** React, styled-Components;
+
+[**APP:**](https://github.com/Jhonatan-Azevedo/Todo-ReactJs-App) React Native.
+
+## 🤘🏼 Authors
+
+[@Jhonatan-Azevedo](https://github.com/Jhonatan-Azevedo)
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jazevedodev/)

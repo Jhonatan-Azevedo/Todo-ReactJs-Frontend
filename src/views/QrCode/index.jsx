@@ -23,11 +23,11 @@ const QrCode = () => {
     }
 
     const setMacMask = (text) => {
-        setMac(mask(unMask(text), '99:99:99:99:99:99'))
+        setMac(mask(unMask(text), '999.999.999.9'))
     }
 
     useEffect(() => {
-        if (mac.length === 17) return setDisabledBtn(false)
+        if (mac.length === 13) return setDisabledBtn(false)
 
         setDisabledBtn(true)
     }, [mac])
