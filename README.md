@@ -1,7 +1,8 @@
 
 # Project Todo Fullstack with NodeJs+ReactJs+ReactNative by @Jhonatan-Azevedo
 
-React Js Front-end.
+- #### React Js Front-end. ####
+
 ## 🛠 Built With
 
 The main frameworks/libraries used in the project
@@ -69,12 +70,17 @@ Start the build
 
 To run this project, you will need to add the following environment variables to your .env file.
 
-`REACT_APP_URL_API=yourUrlApi`
+```bash
+REACT_APP_URL_API=yourUrlApi
+```
 
-`REACT_APP_LOCALSTORAGE_MACADDRESS=yourNameLocalStorage`
+```bash
+REACT_APP_LOCALSTORAGE_MACADDRESS=yourNameLocalStorage
+```
 
-Both are for database access.
+the first key is for accessing API;
 
+the second key is for accessing localStorage.
 
 ## 🔋 Full Stack project
 
